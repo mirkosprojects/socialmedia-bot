@@ -38,7 +38,7 @@ def main():
             try:
                 user = User(username, password, data)
                 break
-            except TypeError:
+            except InvalidPasswordError:
                 shortcuts.message_dialog(text= "Username and password don't match").run()
 
         else:
@@ -168,16 +168,21 @@ class PasswordValidator(validation.Validator):
             raise validation.ValidationError(message='Please use numbers')
 
 
+class InvalidPasswordError(Exception):
+    """Exception raised when password doesn't match hash"""
+    def __init__(self, message = "Invalid password"):
+        self.message = message
+        super().__init__(self.message)
+
 
 class User():
     """User Class containing secret information"""
     def __init__(self, username: str, password: str, data: json):
         self.username = username
         self.password = password
-        self.logged_in = False
         self.__user_data = None
         if not self.check_password(data):
-            raise TypeError # TODO: custom Error
+            raise InvalidPasswordError
         self.decrypt_user_data(data)
 
     @classmethod
