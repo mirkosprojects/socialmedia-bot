@@ -9,18 +9,6 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from prompt_toolkit import prompt, shortcuts, validation
 
-class AuthenticationException(Exception):
-    """Raised when username and password do not match"""
-    pass
-
-def password_validation_func(text: str) -> bool:
-        """checks for strong password"""
-        special_characters = "!@#$%^&*()-+?_=,.<>/"
-        length_ok = len(text) > 12
-        contains_special_characters = any(c in special_characters for c in text)
-        contains_numbers = any(c.isdigit() for c in text)
-        return length_ok and contains_special_characters and contains_numbers
-
 def main():
     with open('secrets.json', 'r') as f:
         data = json.load(f)
