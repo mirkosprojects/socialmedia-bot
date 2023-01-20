@@ -8,6 +8,10 @@ from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from prompt_toolkit import prompt, shortcuts, validation
 
+# add custom function for multiline input
+from custom_dialogs import multiline_input_dialog
+shortcuts.multiline_input_dialog = multiline_input_dialog
+
 def main():
     with open('secrets.json', 'r') as f:
         data = json.load(f)
@@ -91,18 +95,16 @@ def main():
             break
         if action == 'send_message':
             # send a whatsapp message
-            clear_cli()
-            try:
-                message = prompt("Please enter your message: [ESC] and [Enter] to finish\n", multiline=True)
-            except KeyboardInterrupt:
-                pass
-            else:
-                whatsapp_response = user.send_whatsapp_message(message, 4917642602495)
-                if whatsapp_response.status_code == 401:
-                    error_message = json.loads(whatsapp_response.text)["error"]["message"]
-                    shortcuts.message_dialog(text= f"An Error occurred: {error_message}").run()
-                else:
-                    shortcuts.message_dialog(text= "Message sent successfully!").run()
+            message = shortcuts.multiline_input_dialog(text="Please enter your message").run()
+            if message == None: continue
+            whatsapp_response = user.send_whatsapp_message(message, 4917642602495)
+            print(whatsapp_response.text)
+            print(whatsapp_response.status_code)
+            if whatsapp_response.status_code != 200:    # Error codes: https://developers.facebook.com/docs/whatsapp/on-premises/errors
+                error_message = json.loads(whatsapp_response.text)["error"]["message"]
+                shortcuts.message_dialog(text= f"An Error occurred: {error_message}").run()
+                continue
+            shortcuts.message_dialog(text= "Message sent successfully!").run()
             
         elif action == 'update_token':
             # update the whatsapp access token
@@ -146,6 +148,7 @@ def main():
             data[user.username] = user.get_user_data()
             with open('secrets.json', 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=4)
+
                 
 def clear_cli():
     """clears the command line interface"""
