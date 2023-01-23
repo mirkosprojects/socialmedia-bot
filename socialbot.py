@@ -78,13 +78,12 @@ def main():
             values=[
                 ('post_whatsapp', "Send Whatsapp Message"),
                 ('post_instagram', "Post to Instagram"),
-                ('change_whatsapp_token', "Change Whatsapp Access Token"),
-                ('change_instagram_token', "Change Instagram Access Token"),
-                ('change_password', "Change Password"),
-                ("change_instagram_id", "Change Instagram ID")],
+                ("settings", "Settings")],
             cancel_text="Exit").run()
+
         if action == None:
             break
+
         if action == 'post_whatsapp':
             # prompt for message
             message = shortcuts.multiline_input_dialog(text="Please enter your message").run()
@@ -119,64 +118,79 @@ def main():
                 continue
             shortcuts.message_dialog(instagram_response.text).run()
 
-        elif action == 'change_whatsapp_token':
-            # update the whatsapp access token
-            token = shortcuts.input_dialog(text='Please type your new token:').run()
-            if token == None: continue
-            user.change_token(token, "whatsapp")
-            data[user.username] = user.get_user_data()
-            with open('secrets.json', 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=4)
+        elif action == 'settings':
+            while True:
+                action = shortcuts.radiolist_dialog(
+                    text="Select an action",
+                    values=[
+                        ('change_whatsapp_token', "Change Whatsapp Access Token"),
+                        ('change_instagram_token', "Change Instagram Access Token"),
+                        ('change_password', "Change Password"),
+                        ("change_instagram_id", "Change Instagram ID")],
+                    cancel_text="Back").run()
 
-        elif action == 'change_instagram_token':
-            # update the instagram access token
-            token = shortcuts.input_dialog(text='Please type your new token:').run()
-            if token == None: continue
-            user.change_token(token, "instagram")
-            data[user.username] = user.get_user_data()
-            with open('secrets.json', 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=4)
+                if action == None:
+                    break
 
-        elif action == 'change_password':
-            # change the user password
-            old_password = shortcuts.input_dialog(
-                text='Enter your old password:',
-                password=True).run()
-            if old_password == None:
-                continue
-            if not user.check_password(data, old_password):
-                shortcuts.message_dialog(text= "Wrong password!").run()
-                continue
-            # prompt for new password
-            new_password = shortcuts.input_dialog(
-                text='Enter your new password:',
-                validator=PasswordValidator(),
-                password=True).run()
-            if new_password == None:
-                continue
-            new_password_copy = shortcuts.input_dialog(
-                text='Enter your new password again:',
-                password=True).run()
-            if new_password_copy == None:
-                continue
-            if new_password != new_password_copy:
-                shortcuts.message_dialog(text="Passwords don't match").run()
-                continue
-            if new_password == user.password:
-                shortcuts.message_dialog(text="Can't use the same password").run()
-                continue
+                elif action == 'change_whatsapp_token':
+                    # update the whatsapp access token
+                    token = shortcuts.input_dialog(text='Please type your new token:').run()
+                    if token == None: continue
+                    user.change_token(token, "whatsapp")
+                    data[user.username] = user.get_user_data()
+                    with open('secrets.json', 'w', encoding='utf-8') as f:
+                        json.dump(data, f, ensure_ascii=False, indent=4)
 
-            user.change_password(new_password)
-            data[user.username] = user.get_user_data()
-            with open('secrets.json', 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=4)
+                elif action == 'change_instagram_token':
+                    # update the instagram access token
+                    token = shortcuts.input_dialog(text='Please type your new token:').run()
+                    if token == None: continue
+                    user.change_token(token, "instagram")
+                    data[user.username] = user.get_user_data()
+                    with open('secrets.json', 'w', encoding='utf-8') as f:
+                        json.dump(data, f, ensure_ascii=False, indent=4)
 
-        elif action == 'change_instagram_id':
-            instagram_business_id = shortcuts.input_dialog(text='Please type your new Instagram ID:').run()
-            if instagram_business_id == None: continue
-            user.change_instagram_id(instagram_business_id)
-            with open('secrets.json', 'w', encoding='utf-8') as f:
-                json.dump(data, f, ensure_ascii=False, indent=4)
+                elif action == 'change_password':
+                    # change the user password
+                    old_password = shortcuts.input_dialog(
+                        text='Enter your old password:',
+                        password=True).run()
+                    if old_password == None:
+                        continue
+                    if not user.check_password(data, old_password):
+                        shortcuts.message_dialog(text= "Wrong password!").run()
+                        continue
+                    # prompt for new password
+                    new_password = shortcuts.input_dialog(
+                        text='Enter your new password:',
+                        validator=PasswordValidator(),
+                        password=True).run()
+                    if new_password == None:
+                        continue
+                        
+                    new_password_copy = shortcuts.input_dialog(
+                        text='Enter your new password again:',
+                        password=True).run()
+                    if new_password_copy == None:
+                        continue
+                    if new_password != new_password_copy:
+                        shortcuts.message_dialog(text="Passwords don't match").run()
+                        continue
+                    if new_password == user.password:
+                        shortcuts.message_dialog(text="Can't use the same password").run()
+                        continue
+
+                    user.change_password(new_password)
+                    data[user.username] = user.get_user_data()
+                    with open('secrets.json', 'w', encoding='utf-8') as f:
+                        json.dump(data, f, ensure_ascii=False, indent=4)
+
+                elif action == 'change_instagram_id':
+                    instagram_business_id = shortcuts.input_dialog(text='Please type your new Instagram ID:').run()
+                    if instagram_business_id == None: continue
+                    user.change_instagram_id(instagram_business_id)
+                    with open('secrets.json', 'w', encoding='utf-8') as f:
+                        json.dump(data, f, ensure_ascii=False, indent=4)
 
                 
 # def clear_cli():
