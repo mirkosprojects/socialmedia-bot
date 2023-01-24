@@ -39,10 +39,10 @@
   <p align="center">
     A social media bot, capable of posting to Instagram and Whatsapp!
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/mirkosprojects/socialMediaBot"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/mirkosprojects/socialMediaBot">View Demo</a>
     ·
     <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
     ·
@@ -120,6 +120,10 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   pip install prompt_toolkit
   ```
+* [pyimgbox](https://github.com/plotski/pyimgbox)
+  ```sh
+  pip install pyimgbox
+  ```
 
 ### Installation
 
@@ -157,7 +161,7 @@ Paste the Access Token, you received in <a href="#getting-an-access-token">"Gett
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Proof of Conecpt
+- [ ] Proof of Concept
     - [x] Whatsapp
     - [x] Instagram
     - [ ] Facebook
@@ -165,7 +169,7 @@ Paste the Access Token, you received in <a href="#getting-an-access-token">"Gett
     - [ ] Snapchat
     - [ ] LinkedIn
 - [x] Security
-    - [x] Add password hashing
+    - [x] Password hashing
     - [x] Encrypt Access Tokens
 - [ ] Publish Facebook App
 - [ ] Image Generator using templates
@@ -196,31 +200,36 @@ Don't forget to give the project a star! Thanks again!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
+## Videos and Showcase
+Sending a Whatsapp message using Socialbot
+![Sending a Whatsapp message](images/whatsapp.gif)
+
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/mirkosprojects/socialMediaBot/blob/main/LICENSE) for more information.
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- CONTACT -->
-## Contact
+<!-- ## Contact
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
 Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
+* [Readme Template](https://github.com/othneildrew/Best-README-Template)
 * []()
 * []()
 
