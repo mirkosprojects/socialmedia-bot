@@ -65,8 +65,9 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#dependencies">Dependencies</a></li>
+        <li><a href="#getting-an-access-token">Getting an Access Token</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -113,7 +114,7 @@ The HKA Social Media Bot is a command line tool, capable of sending or posting v
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+<!-- ### Prerequisites
 
 This is an example of how to list things you need to use the software and how to install them.
 * [python-prompt-toolkit](https://github.com/prompt-toolkit/python-prompt-toolkit)
@@ -123,14 +124,22 @@ This is an example of how to list things you need to use the software and how to
 * [pyimgbox](https://github.com/plotski/pyimgbox)
   ```sh
   pip install pyimgbox
-  ```
+  ``` -->
 
 ### Installation
 
 * Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/mirkosprojects/socialmedia-bot.git
    ```
+
+
+### Dependencies
+* Install dependencies
+  ```sh
+  pip install -r requirements.txt
+  ````
+  For more information about the dependencies see [requirements.txt](https://github.com/mirkosprojects/socialMediaBot/blob/main/requirements.txt)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -139,7 +148,7 @@ This is an example of how to list things you need to use the software and how to
 This program needs your authorization in order to publish to Instagram and Whatsapp. To grant access, login to your Facebook Account and search for HKA SocialMediaBot. 
 Click add and grant access to the requested rights.
 
-Once you've granted the required permissions, you will receive an Access Token.
+Once you've granted the required permissions, you will receive an Access Token. Copy this Token and continue with <a href="#usage">Usage</a>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -148,10 +157,22 @@ Once you've granted the required permissions, you will receive an Access Token.
 
 _For more examples, please refer to the [Documentation](https://example.com)_ -->
 
-On the first start of the program, you will have to create a new account. Accounts are stored locally on your device and require a password.
+### First start
 
-Once you have an account, head to settings -> Change Access Token
-Paste the Access Token, you received in <a href="#getting-an-access-token">"Getting an Access Token"</a>.
+On the first start of the program, you will have to create a new account. Accounts are stored locally on your device and require a password. You have the option to create multiple accounts with unique usernames
+
+Once you have an account, head to ```settings``` &rarr; ```Change Access Token```.
+Paste the Access Token, you received in <a href="#getting-an-access-token">Getting an Access Token</a>.
+
+### Sending a Whatsapp Message
+
+Once you entered your Access Token, your user is set up to send Whatsapp Messages through the Graph-API.
+Select ```Send a Whatsapp Message``` and type your text. Emojis and Special characters are supported.
+
+**_NOTE:_** You can have up to 1000 free conversations per month, for more information about pricing, see [Whatsapp pricing](https://developers.facebook.com/docs/whatsapp/pricing/)
+
+| :information_source:  You can have up to 1000 free conversations per month, for more information about pricing, see [Whatsapp pricing](https://developers.facebook.com/docs/whatsapp/pricing/)   |
+|-----------------------------------------|
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -184,7 +205,7 @@ Paste the Access Token, you received in <a href="#getting-an-access-token">"Gett
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+<!-- ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -197,7 +218,7 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
 ## Videos and Showcase
@@ -230,8 +251,6 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 ## Acknowledgments
 
 * [Readme Template](https://github.com/othneildrew/Best-README-Template)
-* []()
-* []()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
