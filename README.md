@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://www.flaticon.com/de/kostenlose-icons/bot">
+  <a href="https://www.flaticon.com/de/kostenloses-icon/roboter_3558860">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -39,20 +39,21 @@
   <p align="center">
     A social media bot, capable of posting to Instagram and Whatsapp!
     <br />
-    <a href="https://github.com/mirkosprojects/socialMediaBot"><strong>Explore the docs »</strong></a>
+    <a href="#readme-toc"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/mirkosprojects/socialMediaBot">View Demo</a>
+    <a href="#videos-and-showcase">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <!-- <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
     ·
     <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
-    ·
-    <a href="https://www.flaticon.com/de/kostenlose-icons/bot"> Icon </a>
+    · -->
+    <a href="https://www.flaticon.com/de/kostenloses-icon/roboter_3558860"> Icon </a>
   </p>
 </div>
 
 <!-- TABLE OF CONTENTS -->
+<a name="readme-toc"></a>
 <details>
   <summary>Table of Contents</summary>
   <ol>
@@ -110,9 +111,9 @@ The HKA Social Media Bot is a command line tool, capable of sending or posting v
 
 <!-- GETTING STARTED -->
 ## Getting Started
-
+<!-- 
 This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy up and running follow these simple example steps. -->
 
 <!-- ### Prerequisites
 
@@ -130,18 +131,30 @@ This is an example of how to list things you need to use the software and how to
 
 * Clone the repo
    ```sh
-   git clone https://github.com/mirkosprojects/socialmedia-bot.git
+   git clone https://github.com/mirkosprojects/socialMediaBot.git
    ```
-
-
-### Dependencies
 * Install dependencies
   ```sh
   pip install -r requirements.txt
   ````
   For more information about the dependencies see [requirements.txt](https://github.com/mirkosprojects/socialMediaBot/blob/main/requirements.txt)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Creating a Facebook Business Account
+
+```
+HOW TO CREATE OR CONVERT TO A FACEBOOK BUSINESS ACCOUNT
+```
+
+### Creating a Instagram Business Account
+
+```
+HOW TO CREATE OR CONVERT TO AN INSTAGRAM BUSINESS ACCOUNT
+```
+
+### Linking to Facebook
+```
+HOW TO LINK WHATSAPP AND INSTAGRAM ACCOUNTS TO FACEBOOK
+```
 
 ### Getting an Access Token
 
@@ -149,6 +162,8 @@ This program needs your authorization in order to publish to Instagram and Whats
 Click add and grant access to the requested rights.
 
 Once you've granted the required permissions, you will receive an Access Token. Copy this Token and continue with <a href="#usage">Usage</a>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -166,17 +181,21 @@ Paste the Access Token, you received in <a href="#getting-an-access-token">Getti
 
 ### Sending a Whatsapp Message
 
-Once you entered your Access Token, your user is set up to send Whatsapp Messages through the Graph-API.
-Select ```Send a Whatsapp Message``` and type your text. Emojis and Special characters are supported.
+Once you entered your Access Token, your user is set up to send Whatsapp Messages.
+Select ```Send a Whatsapp Message```, type your text and click ```OK```. Emojis and special characters are supported.
 
 > **Note** 
-> You can have up to 1000 free conversations per month, for more information about pricing, see [Whatsapp pricing](https://developers.facebook.com/docs/whatsapp/pricing/)
+> You can have up to 1000 free conversations per month, for more information about pricing, see [pricing](https://developers.facebook.com/docs/whatsapp/pricing/)
 
-> **Note**
-> New test
+### Posting to Instagram
+
+Select ```Post to Instagram``` and type the path of your image. Click ```OK``` and type a caption. Emojis and hashtags are supported.
 
 > **Warning**
-> This is a warning
+> In order to upload the image to instagram, this program publishes the image on [imgbox.com](https://imgbox.com/). This means, your photos will be available on the internet, even after you delete them from Instagram.
+
+> **Note**
+> You can post up to 25 Pictures per day
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -229,12 +248,12 @@ Don't forget to give the project a star! Thanks again!
 Sending a Whatsapp message using Socialbot
 ![Sending a Whatsapp message](images/whatsapp.gif)
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See [LICENSE](https://github.com/mirkosprojects/socialMediaBot/blob/main/LICENSE) for more information.
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -255,6 +274,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 ## Acknowledgments
 
 * [Readme Template](https://github.com/othneildrew/Best-README-Template)
+* <a href="https://www.flaticon.com/de/kostenlose-icons/bot" title="bot Icons">Bot Icons erstellt von Smashicons - Flaticon</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
