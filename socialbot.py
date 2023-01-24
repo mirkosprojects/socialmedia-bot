@@ -8,8 +8,10 @@ from user import User, InvalidPasswordError
 from custom_dialogs import multiline_input_dialog
 shortcuts.multiline_input_dialog = multiline_input_dialog
 
+secrets = os.path.join(os.path.dirname(__file__), '.secrets.json')
+
 def main():
-    with open('.secrets.json', 'r') as f:
+    with open(secrets, 'r') as f:
         data = json.load(f)
 
     while True:
@@ -67,7 +69,7 @@ def main():
             
             # create user object
             user = User.new(username, password, data)
-            with open('.secrets.json', 'w', encoding='utf-8') as f:
+            with open(secrets, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=4)
             break
 
@@ -138,7 +140,7 @@ def main():
                     if token == None: continue
                     user.change_token(token, "whatsapp")
                     data[user.username] = user.get_user_data()
-                    with open('.secrets.json', 'w', encoding='utf-8') as f:
+                    with open(secrets, 'w', encoding='utf-8') as f:
                         json.dump(data, f, ensure_ascii=False, indent=4)
 
                 elif action == 'change_instagram_token':
@@ -147,7 +149,7 @@ def main():
                     if token == None: continue
                     user.change_token(token, "instagram")
                     data[user.username] = user.get_user_data()
-                    with open('.secrets.json', 'w', encoding='utf-8') as f:
+                    with open(secrets, 'w', encoding='utf-8') as f:
                         json.dump(data, f, ensure_ascii=False, indent=4)
 
                 elif action == 'change_password':
@@ -182,14 +184,14 @@ def main():
 
                     user.change_password(new_password)
                     data[user.username] = user.get_user_data()
-                    with open('.secrets.json', 'w', encoding='utf-8') as f:
+                    with open(secrets, 'w', encoding='utf-8') as f:
                         json.dump(data, f, ensure_ascii=False, indent=4)
 
                 elif action == 'change_instagram_id':
                     instagram_business_id = shortcuts.input_dialog(text='Please type your new Instagram ID:').run()
                     if instagram_business_id == None: continue
                     user.change_instagram_id(instagram_business_id)
-                    with open('.secrets.json', 'w', encoding='utf-8') as f:
+                    with open(secrets, 'w', encoding='utf-8') as f:
                         json.dump(data, f, ensure_ascii=False, indent=4)
 
                 
