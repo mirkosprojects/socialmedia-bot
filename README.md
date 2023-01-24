@@ -169,11 +169,14 @@ Paste the Access Token, you received in <a href="#getting-an-access-token">Getti
 Once you entered your Access Token, your user is set up to send Whatsapp Messages through the Graph-API.
 Select ```Send a Whatsapp Message``` and type your text. Emojis and Special characters are supported.
 
-> **NOTE:** 
+> **Note** 
 > You can have up to 1000 free conversations per month, for more information about pricing, see [Whatsapp pricing](https://developers.facebook.com/docs/whatsapp/pricing/)
 
-| :information_source:  You can have up to 1000 free conversations per month, for more information about pricing, see [Whatsapp pricing](https://developers.facebook.com/docs/whatsapp/pricing/)   |
-|-----------------------------------------|
+> **Note**
+> New test
+
+> **Warning**
+> This is a warning
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
