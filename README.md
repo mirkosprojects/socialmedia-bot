@@ -145,7 +145,7 @@ This is an example of how to list things you need to use the software and how to
 HOW TO CREATE OR CONVERT TO A FACEBOOK BUSINESS ACCOUNT
 ```
 
-### Creating a Instagram Business Account
+### Creating an Instagram Business Account
 
 ```
 HOW TO CREATE OR CONVERT TO AN INSTAGRAM BUSINESS ACCOUNT
@@ -158,10 +158,14 @@ HOW TO LINK WHATSAPP AND INSTAGRAM ACCOUNTS TO FACEBOOK
 
 ### Getting an Access Token
 
-This program needs your authorization in order to publish to Instagram and Whatsapp. To grant access, login to your Facebook Account and search for HKA SocialMediaBot. 
+<!-- This program needs your authorization in order to publish to Instagram and Whatsapp. To grant access, login to your Facebook Account and search for HKA SocialMediaBot. 
 Click add and grant access to the requested rights.
 
-Once you've granted the required permissions, you will receive an Access Token. Copy this Token and continue with <a href="#usage">Usage</a>
+Once you've granted the required permissions, you will receive an Access Token. Copy this Token and continue with <a href="#usage">Usage</a> -->
+
+```
+HOW TO ADD FACEBOOK APP TO ACCOUNT AND RECEIVE ACCESS TOKEN
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
