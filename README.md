@@ -131,10 +131,11 @@ This is an example of how to list things you need to use the software and how to
 
 * Clone the repo
    ```sh
-   git clone https://github.com/mirkosprojects/socialMediaBot.git
+   git clone https://github.com/mirkosprojects/socialmedia-bot.git
    ```
 * Install dependencies
   ```sh
+  cd socialmedia-bot
   pip install -r requirements.txt
   ````
   For more information about the dependencies see [requirements.txt](https://github.com/mirkosprojects/socialMediaBot/blob/main/requirements.txt)
