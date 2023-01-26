@@ -4,17 +4,21 @@ import json
 import os
 from prompt_toolkit import shortcuts, validation
 
-from user import User, InvalidPasswordError
+from user import User, InvalidPasswordError, InvalidUserDataError
 
 # add custom function for multiline input
 from custom_dialogs import multiline_input_dialog
 shortcuts.multiline_input_dialog = multiline_input_dialog
 
 secrets = os.path.join(os.path.dirname(__file__), '.secrets.json')
+template = os.path.join(os.path.dirname(__file__), 'template.json')
 
 def main():
     with open(secrets, 'r') as f:
         data = json.load(f)
+    
+    with open(template, 'r') as f:
+        data_template = json.load(f)
 
     while True:
         # prompt for login, new user or exit
@@ -40,10 +44,13 @@ def main():
 
             # create user object
             try:
-                user = User(username, password, data)
+                user = User(username, password, data, data_template)
                 break
             except InvalidPasswordError:
                 shortcuts.message_dialog(text= "Username and password don't match").run()
+            except InvalidUserDataError as e:
+                shortcuts.message_dialog(text= e.message).run()
+                break
 
         else:
             # prompt for username
@@ -70,7 +77,7 @@ def main():
                 continue
             
             # create user object
-            user = User.new(username, password, data)
+            user = User.new(username, password, data, data_template)
             with open(secrets, 'w', encoding='utf-8') as f:
                 json.dump(data, f, ensure_ascii=False, indent=4)
             break
@@ -94,7 +101,7 @@ def main():
             if message == None: continue
             
             # send message
-            whatsapp_response = user.send_whatsapp_message(message, 106161455706789, 4917642602495)
+            whatsapp_response = user.send_whatsapp_message(message, 4917642602495)
             if whatsapp_response.status_code != 200:    # Error codes: https://developers.facebook.com/docs/whatsapp/on-premises/errors
                 error_message = json.loads(whatsapp_response.text)["error"]["message"]
                 shortcuts.message_dialog(text= f"An Error occurred: {error_message}").run()
@@ -130,7 +137,8 @@ def main():
                         ('change_whatsapp_token', "Change Whatsapp Access Token"),
                         ('change_instagram_token', "Change Instagram Access Token"),
                         ('change_password', "Change Password"),
-                        ("change_instagram_id", "Change Instagram ID")],
+                        ("change_instagram_id", "Change Instagram ID"),
+                        ("change_whatsapp_number", "Change Whatsapp number")],
                     cancel_text="Back").run()
 
                 if action == None:
@@ -193,6 +201,13 @@ def main():
                     instagram_business_id = shortcuts.input_dialog(text='Please type your new Instagram ID:').run()
                     if instagram_business_id == None: continue
                     user.change_instagram_id(instagram_business_id)
+                    with open(secrets, 'w', encoding='utf-8') as f:
+                        json.dump(data, f, ensure_ascii=False, indent=4)
+
+                elif action == 'change_whatsapp_number':
+                    whatsapp_phone_number = shortcuts.input_dialog(text='Please type your new phone number:').run()
+                    if whatsapp_phone_number == None: continue
+                    user.change_whatsapp_number(whatsapp_phone_number)
                     with open(secrets, 'w', encoding='utf-8') as f:
                         json.dump(data, f, ensure_ascii=False, indent=4)
 

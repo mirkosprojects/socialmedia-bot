@@ -8,49 +8,50 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from media_upload import export_to_jpg, upload_images
+from helpers import compare_jsons
+
 
 class InvalidPasswordError(Exception):
     """Exception raised when password doesn't match hash"""
-    def __init__(self, message = "Invalid password"):
+    def __init__(self, message = "Wrong Password!"):
         self.message = message
+        super().__init__(self.message)
+
+
+class InvalidUserDataError(Exception):
+    """Exception raised when there are missing keys in the user data"""
+    def __init__(self, errors):
+        self.message = f"There are missing keys for this user: {', '.join(errors)}"
         super().__init__(self.message)
 
 
 class User():
     """User Class containing secret information"""
-    available_messengers = ["whatsapp", "instagram"]
-
-    def __init__(self, username: str, password: str, data: json):
+    def __init__(self, username: str, password: str, data: json, template: json):
         self.username = username
         self.password = password
         self.__user_data = None
+        self.available_messengers = [messenger for messenger in template if messenger not in ["salt", "hash"]]
+
         if not self.check_password(data):
             raise InvalidPasswordError
         self.decrypt_user_data(data)
 
+        user_data_errors = compare_jsons(template, self.__user_data)
+        if user_data_errors:
+            raise InvalidUserDataError(user_data_errors)
+
     @classmethod
-    def new(cls, username: str, password: str, data: json):
+    def new(cls, username: str, password: str, data: json, template: json):
         """creates a new user"""
 
         # create user data
         salt, hash = cls.generate_password_hash(password)
-
-        # append new user to secrets.json
-        data.update({
-            username:{
-                "salt": salt,
-                "hash": hash
-            }
-        })
-        for messenger in cls.available_messengers:
-            data[username].update({
-                messenger:{
-                    "token": "ABCD",
-                    "decrypted token": "ABCD",
-                    "token length": 4
-                }
-            })
-        return cls(username, password, data)
+        data.update({username: template})
+        data[username]["salt"] = salt
+        data[username]["hash"] = hash
+        
+        return cls(username, password, data, template)
 
     def decrypt_user_data(self, data: json):
         """decrypts user data"""
@@ -96,12 +97,12 @@ class User():
         # data["decrypted token"] = ""
         return data
 
-    def send_whatsapp_message(self, message: str, sender_number: int, receiver_number: int):
+    def send_whatsapp_message(self, message: str, receiver_number: int):
         """
         sends a whatsapp message
         TODO: response returns access token!
         """
-        
+        sender_number = self.__user_data["whatsapp"]["phone number"]
         token = self.__user_data["whatsapp"]["decrypted token"]
         url = f"https://graph.facebook.com/v15.0/{sender_number}/messages"
         my_headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
@@ -144,8 +145,6 @@ class User():
         }
         return requests.post(publish_url, data=publish_payload)
         
-
-
     def change_password(self, new_password):
         salt, hash = User.generate_password_hash(new_password)
 
@@ -181,17 +180,14 @@ class User():
                 "business id": id
             })
 
-    # def change_user_attribute(self, attribute: str, value, messenger: str):
-    #     """changes an attribute in the user data"""
-    #     if attribute == 'token':
-    #         self.change_token(value, messenger)
-    #         return
-    #     if value in self.__user_data[messenger]:
-    #         self.__user_data[messenger][attribute] = value
-    #     else:
-    #         self.__user_data[messenger].update({
-    #             attribute: value
-    #         })
+    def change_whatsapp_number(self, number: int):
+        """changes the instagram business id"""
+        if "phone number" in self.__user_data["whatsapp"]:
+            self.__user_data["whatsapp"]["phone number"] = number
+        else:
+            self.__user_data["whatsapp"].update({
+                "phone number": number
+            })
 
     def decrypt_token(salt: str, password: str, token: str, length: int) -> str:
         """decrypts the access token"""
