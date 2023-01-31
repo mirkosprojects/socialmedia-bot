@@ -1,0 +1,125 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block
+content %}
+{% include "messages.html" %}
+
+<img src="../static/logo.png" alt="Logo" id="icon">
+<br>
+<!-- <div data-role="page" id="welcome" data-url="{{ url_for('views.home') }}"></div> -->
+
+<body>
+  <p>What would you like to post today?</p>
+  <form method="POST" enctype="multipart/form-data" onsubmit='disableButton()'>
+  <div id="post_layout" class="w3-container w3-display-container settings">
+    <div class="container">
+      <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="card h-100">
+            <div class="card-body">
+              <!-- <form method="POST"> -->
+                <div class="row gutters">
+                  <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9 col-12">
+                    <div class="input_panel">
+                      <textarea name="text_input" maxlength="130" placeholder="Enter your post"></textarea>
+                    </div>
+                  </div>
+                  <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                    <div class="sidebar">
+                      <input type="checkbox" id="twitter" name="twitter" value="twitter">
+                      <input type="checkbox" id="twitter1" name="twitter1" value="twitter1" hidden="true" disabled="true">
+                      <label for="twitter"> Twitter</label><br>
+                      <input type="checkbox" id="whatsapp" name="whatsapp" value="whatsapp">
+                      <input type="checkbox" id="whatsapp1" name="whatsapp1" value="whatsapp1" hidden="true" disabled="true">
+                      <label for="whatsapp"> Whatsapp</label><br>
+                      <input type="checkbox" id="instagram" name="instagram" value="instagram">
+                      <input type="checkbox" id="instagram1" name="instagram1" value="instagram1" hidden="true" disabled="true">
+                      <label for="instagram"> Instagram</label><br>
+                      <input type="checkbox" id="facebook" name="facebook" value="facebook">
+                      <input type="checkbox" id="facebook1" name="facebook1" value="facebook1" hidden="true" disabled="true">
+                      <label for="facebook"> Facebook</label><br>
+                      <input type="checkbox" id="snapchat" name="snapchat" value="snapchat">
+                      <input type="checkbox" id="snapchat1" name="snapchat1" value="snapchat1" hidden="true" disabled="true">
+                      <label for="snapchat"> Snapchat</label><br>
+                      <input type="checkbox" id="linkedin" name="linkedin" value="linkedin">
+                      <input type="checkbox" id="linkedin1" name="linkedin1" value="linkedin1" hidden="true" disabled="true">
+                      <label for="linkedin"> LinkedIn</label><br>
+                      <input class="btn btn-primary" type="submit" value="Post" id="send_post_button">
+                    </div>
+                  </div>
+                </div>
+              <!-- </form> -->
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="img_container">
+
+                <!-- <form method="POST" enctype="multipart/form-data" action="upload">
+                      <input type="file" id="myFile" name="uploaded-file" accept=".jpg"
+                        style="color:transparent; width: 135px;" onchange="form.submit()">
+                    </form>
+                    <br>
+                    <img src="{{ user_image }}" alt="Choose an image" style="max-width: 10%; max-height: 10%;"> -->
+                <input type="file" name="uploaded-file" accept=".jpg,jpeg,.png">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                <!-- <script type="text/javascript" src="../js/image_selector.js"></script> -->
+                <script>
+                  $("input").change(function (e) {
+                    var file = e.originalEvent.srcElement.files[0];
+
+                    var img = document.createElement("img");
+                    var reader = new FileReader();
+                    reader.onloadend = function (){
+                      img.src = reader.result;
+                    }
+                    reader.readAsDataURL(file);
+                    $("img").replaceWith(img);
+                  });
+                </script>
+                <br>
+                <img id="upload_image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </form>
+
+  <script>
+    function disableButton() {
+        var post_btn = document.getElementById('send_post_button');
+        // var upload_button = document.getElementById('upload_button');
+
+        var twt = document.getElementById('twitter');
+        var twt1 = document.getElementById('twitter1');
+        var wa = document.getElementById('whatsapp');
+        var wa1 = document.getElementById('whatsapp1');
+        var inst = document.getElementById('instagram');
+        var inst1 = document.getElementById('instagram1');
+        var fb = document.getElementById('facebook');
+        var fb1 = document.getElementById('facebook1');
+        var sc = document.getElementById('snapchat');
+        var sc1 = document.getElementById('snapchat1');
+        var ln = document.getElementById('linkedin');
+        var ln1 = document.getElementById('linkedin1');
+
+        post_btn.disabled = true;
+        // post_btn.innerText = 'Posting...';
+        // upload_button.disabled = true;
+
+        twt.hidden = true;
+        twt1.hidden = false;
+        wa.hidden = true
+        wa1.hidden = false
+        inst.hidden = true;
+        inst1.hidden = false;
+        fb.hidden = true;
+        fb1.hidden = false;
+        sc.hidden = true;
+        sc1.hidden = false;
+        ln.hidden = true;
+        ln1.hidden = false;
+        
+    }
+</script>
+
+</body>
+{% endblock %}

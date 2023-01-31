@@ -12,6 +12,7 @@ shortcuts.multiline_input_dialog = multiline_input_dialog
 
 secrets = os.path.join(os.path.dirname(__file__), '.secrets.json')
 template = os.path.join(os.path.dirname(__file__), 'template.json')
+contacts = os.path.join(os.path.dirname(__file__), 'contacts')
 
 def main():
     with open(secrets, 'r') as f:
@@ -96,17 +97,36 @@ def main():
             break
 
         if action == 'post_whatsapp':
-            # prompt for message
+            # prompt for message and contact list
             message = shortcuts.multiline_input_dialog(text="Please enter your message").run()
             if message == None: continue
+
+            contact_lists = [os.path.splitext(f)[0] for f in os.listdir(contacts) if f.endswith(".json")]
+            buttons = [(contact_list, contact_list) for contact_list in contact_lists]
+            receiver_numbers = shortcuts.radiolist_dialog(
+                        text="Select a contact list",
+                        values=buttons).run()
+            if receiver_numbers == None: continue
+
+            with open(os.path.join(contacts, receiver_numbers) + ".json", 'r') as f:
+                contact_list = json.load(f)
             
-            # send message
-            whatsapp_response = user.send_whatsapp_message(message, 4917642602495)
-            if whatsapp_response.status_code != 200:    # Error codes: https://developers.facebook.com/docs/whatsapp/on-premises/errors
-                error_message = json.loads(whatsapp_response.text)["error"]["message"]
-                shortcuts.message_dialog(text= f"An Error occurred: {error_message}").run()
-                continue
-            shortcuts.message_dialog(text= "Message sent successfully!").run()
+            # send messages
+            error_messages = []
+            for number in contact_list:
+                whatsapp_response = user.send_whatsapp_message(message, number)
+                if whatsapp_response.status_code != 200:    # Error codes: https://developers.facebook.com/docs/whatsapp/on-premises/errors
+                    error_messages.append(json.loads(whatsapp_response.text)["error"]["message"])
+            
+            delivered_messages = len(contact_list) - len(error_messages)
+            total_messages = len(contact_list)
+
+            # show error or success
+            if not error_messages:
+                shortcuts.message_dialog(text= f"{delivered_messages}/{total_messages} messages were delivierd succesfully!").run()
+            else:
+                formatted_error_messages = '\n'.join(error_messages)
+                shortcuts.message_dialog(text= f"{delivered_messages}/{total_messages} messages were delivierd succesfully!\nSome errors occured: \n{formatted_error_messages}").run()
         
         elif action == 'post_instagram':
             # prompt for image and caption
@@ -128,6 +148,26 @@ def main():
                 shortcuts.message_dialog(text= f"An Error occurred: {error_message}").run()
                 continue
             shortcuts.message_dialog(instagram_response.text).run()
+
+        # elif action == "edit_contacts":
+        #     # prompt for contactlist name
+        #     contact_list_name = shortcuts.input_dialog(text='Please type the name of your contactlist:').run()
+        #     if contact_list_name == None: continue
+        #     contact_list_path = os.path.join(contacts, contact_list_name + ".json")
+        #     if os.path.exists(contact_list_path):
+        #         with open(contact_list_path, 'r') as f:
+        #             contact_list = json.load(f)
+        #         for idx, phone_number in enumerate(contact_list):
+        #             new_number = shortcuts.input_dialog(text=str(phone_number), ok_text='Change').run()
+        #             if new_number != None:
+        #                 contact_list[idx] = int(new_number)
+
+        #     with open(contact_list_path, 'w', encoding='utf-8') as f:
+        #         json.dump(contact_list, f, ensure_ascii=False, indent=4)
+
+            # TODO: New contact list
+            # TODO: Delete contact list
+
 
         elif action == 'settings':
             while True:

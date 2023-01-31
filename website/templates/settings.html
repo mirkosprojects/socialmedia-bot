@@ -1,0 +1,266 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/settings.css') }}">
+
+{% extends "base.html" %} {% block title %}Settings{% endblock %} {% block
+content %}
+<nav class="navbar1 navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar1">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" id="whatsapp_settings" onclick="openSettings('whatsapp')">Whatsapp</a>
+            <a class="nav-item nav-link" id="instagram_settings" onclick="openSettings('instagram')">Instagram</a>
+            <a class="nav-item nav-link" id="facebook_settings" onclick="openSettings('facebook')">Facebook</a>
+            <a class="nav-item nav-link" id="contacts_settings" onclick="openSettings('contacts')">Contacts</a>
+        </div>
+    </div>
+</nav>
+{% include "messages.html" %}
+<br>
+<form action="settings" method="POST">
+    <div id="contacts" class="w3-container w3-display-container settings">
+        <div class="container">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary">Edit Contacts</h6>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <div class="container">
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Number</th>
+                                                    <th>Email</th>
+                                                    <th></th>
+                                                </tr>
+                                                {% for contact in user.contacts %}
+                                                <tr>
+                                                    <td>{{ contact.name }}</td>
+                                                    <td>{{ contact.phone_number }}</td>
+                                                    <td>{{ contact.email }}</td>
+                                                    <td><button type="button" class="close"
+                                                            onClick='deleteContact("{{ contact.id }}")'>
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button></td>
+                                                </tr>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <br>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary">Add Contact</h6>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <div class="container">
+                                            <table style="width:100%">
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Number</th>
+                                                    <th>Email</th>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="text" placeholder="Enter a name" id="table_input"
+                                                            name="contact_name"></td>
+                                                    <td><input inputmode="numeric" placeholder="Enter a phone number"
+                                                            id="table_input" name="contact_number"
+                                                            oninput="this.value=this.value.replace(/\D+/g, '')"></td>
+                                                    <td><input type="text" placeholder="Enter an email" id="table_input"
+                                                            name="contact_email"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right">
+                                        <!-- <input type="submit" class="btn btn-secondary" value="Cancel" id="cancel_whatsapp_button" name="cancel_whatsapp_button"> -->
+                                        <input type="submit" class="btn btn-primary" value="Add" id="add_contact_button"
+                                            name="add_contact_button">
+                                        <!-- <button type="button" id="submit" name="submit"
+                                       class="btn btn-secondary">Cancel</button>
+                                   <button type="button" id="submit" name="submit"
+                                       class="btn btn-primary">Update</button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form action="settings" method="POST">
+    <div id="whatsapp" class="w3-container w3-display-container settings" style="display:none">
+        <div class="container">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary">Whatsapp</h6>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="whatsapp_token">Access Token</label>
+                                        <input type="text" class="form-control" id="whatsapp_token"
+                                            name="whatsapp_token" value={{ data.whatsapp_token }}>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="whatsapp_number">Phone Number</label>
+                                        <input type="number" class="form-control" id="whatsapp_number"
+                                            name="whatsapp_number" value={{ data.whatsapp_number }}>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right">
+                                        <!-- <input type="submit" class="btn btn-secondary" value="Cancel" id="cancel_whatsapp_button" name="cancel_whatsapp_button"> -->
+                                        <input type="submit" class="btn btn-primary" value="Update"
+                                            id="update_whatsapp_button" name="update_whatsapp_button">
+                                        <!-- <button type="button" id="submit" name="submit"
+                                        class="btn btn-secondary">Cancel</button>
+                                    <button type="button" id="submit" name="submit"
+                                        class="btn btn-primary">Update</button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<form action="settings" method="POST">
+    <div id="instagram" class="w3-container w3-display-container settings" style="display:none">
+        <div class="container">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary">Instagram</h6>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="instagram_token">Access Token</label>
+                                        <input type="text" class="form-control" id="instagram_token"
+                                            name="instagram_token" value={{ data.instagram_token }}>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="instagram_id">Business ID</label>
+                                        <input type="number" class="form-control" id="instagram_id" name="instagram_id"
+                                            value={{ data.instagram_id }}>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right">
+                                        <!-- <input type="submit" class="btn btn-secondary" value="Cancel" id="cancel_whatsapp_button" name="cancel_whatsapp_button"> -->
+                                        <input type="submit" class="btn btn-primary" value="Update"
+                                            id="update_instagram_button" name="update_instagram_button">
+                                        <!-- <button type="button" id="submit" name="submit"
+                                        class="btn btn-secondary">Cancel</button>
+                                    <button type="button" id="submit" name="submit"
+                                        class="btn btn-primary">Update</button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<form action="settings" method="POST">
+    <div id="facebook" class="w3-container w3-display-container settings" style="display:none">
+        <div class="container">
+            <div class="row gutters">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <h6 class="mb-3 text-primary">Facebook</h6>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="facebook_token">Access Token</label>
+                                        <input type="text" class="form-control" id="facebook_token"
+                                            name="facebook_token" value={{ data.facebook_token }}>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="facebook_id">Business ID</label>
+                                        <input type="number" class="form-control" id="facebook_id" name="facebook_id"
+                                            value={{ data.facebook_id }}>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right">
+                                        <!-- <input type="submit" class="btn btn-secondary" value="Cancel" id="cancel_whatsapp_button" name="cancel_whatsapp_button"> -->
+                                        <input type="submit" class="btn btn-primary" value="Update"
+                                            id="update_facebook_button" name="update_facebook_button">
+                                        <!-- <button type="button" id="submit" name="submit"
+                                       class="btn btn-secondary">Cancel</button>
+                                   <button type="button" id="submit" name="submit"
+                                       class="btn btn-primary">Update</button> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script>
+    function openSettings(settings_id) {
+        var i;
+        var x = document.getElementsByClassName("settings");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(settings_id).style.display = "block";
+    }
+</script>
+<script>
+    function deleteContact(contact_id) {
+        fetch("/delete-contact", {
+            method: "POST",
+            body: JSON.stringify({ contact_id: contact_id }),
+        }).then((_res) => {
+            window.location.href = "/settings";
+        });
+    }
+</script>
+{% endblock %}
