@@ -1,0 +1,12 @@
+#upload_image {
+    width: auto;
+    height: 70%;
+    /* align-self: center; */
+}
+
+#img_container {
+    height: 200px;
+    width: auto;
+    /* background-color: aqua; */
+    align-content: center;
+}
