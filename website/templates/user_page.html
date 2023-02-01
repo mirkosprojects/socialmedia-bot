@@ -2,7 +2,8 @@
 content %}
 {% include "messages.html" %}
 
-<img src="../static/logo.png" alt="Logo" id="icon">
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/user_page.css') }}">
+<img src="../static/logo.png" alt="Logo" id="icon" name="icon">
 <br>
 <!-- <div data-role="page" id="welcome" data-url="{{ url_for('views.home') }}"></div> -->
 
@@ -47,14 +48,8 @@ content %}
                   </div>
                 </div>
               <!-- </form> -->
+              <div class="row gutters">
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" id="img_container">
-
-                <!-- <form method="POST" enctype="multipart/form-data" action="upload">
-                      <input type="file" id="myFile" name="uploaded-file" accept=".jpg"
-                        style="color:transparent; width: 135px;" onchange="form.submit()">
-                    </form>
-                    <br>
-                    <img src="{{ user_image }}" alt="Choose an image" style="max-width: 10%; max-height: 10%;"> -->
                 <input type="file" name="uploaded-file" accept=".jpg,jpeg,.png">
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
                 <!-- <script type="text/javascript" src="../js/image_selector.js"></script> -->
@@ -62,18 +57,22 @@ content %}
                   $("input").change(function (e) {
                     var file = e.originalEvent.srcElement.files[0];
 
-                    var img = document.createElement("img");
+                    // var img = document.createElement("img");
+                    var img = document.getElementById("upload_image")
                     var reader = new FileReader();
                     reader.onloadend = function (){
                       img.src = reader.result;
                     }
                     reader.readAsDataURL(file);
-                    $("img").replaceWith(img);
+                    $("upload_image").replaceWith(img);
                   });
                 </script>
                 <br>
-                <img id="upload_image">
+                <br>
+                <img id="upload_image", src="../static/upload.png">
+                <br>
               </div>
+            </div>
             </div>
           </div>
         </div>

@@ -19,13 +19,6 @@ p {
     height: 80px;
 }
 
-#img_container {
-    height: 200px;
-    width: 200px;
-    /* background-color: aqua; */
-    align-content: center;
-}
-
 textarea {
     /* margin-left: 60px; */
     width: 100%;
