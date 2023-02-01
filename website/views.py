@@ -79,7 +79,7 @@ def home():
                 flash(f"{delivered_images}/{total_messages} images were delivierd succesfully!", category="success")
             elif image_url:
                 formatted_error_messages = '\n'.join(error_messages_img)
-                flash(f"{delivered_messages}/{total_messages} images were delivierd succesfully!\nSome errors occured: \n{formatted_error_messages}", category="error")
+                flash(f"{delivered_images}/{total_messages} images were delivierd succesfully!\nSome errors occured: \n{formatted_error_messages}", category="error")
             if not error_messages_msg and text:
                 flash(f"{delivered_messages}/{total_messages} messages were delivierd succesfully!", category="success")
             elif text:
