@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://www.flaticon.com/de/kostenloses-icon/roboter_3558860">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="website/static/logo.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">HKA Social Media Bot</h3>
@@ -250,8 +250,19 @@ Don't forget to give the project a star! Thanks again!
 
 
 ## Videos and Showcase
-Sending a Whatsapp message using Socialbot
-![Sending a Whatsapp message](images/whatsapp.gif)
+
+### Sending a whatsapp message and posting to instagram using Socialbot
+
+![Sending a Whatsapp message](website/static/whatsapp_instagram_demo.gif)
+
+### Changing the whatsapp access token and phone number
+
+![Changing Whatsapp settings](website/static/settings_whatsapp.png)
+
+### Editing the contacts
+
+![Editing Contact](website/static/settings_contacts.png)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
