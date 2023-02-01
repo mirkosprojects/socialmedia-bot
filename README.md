@@ -67,15 +67,28 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#installation">Installation</a></li>
-        <li><a href="#dependencies">Dependencies</a></li>
+        <li><a href="#creating-a-facebook-business-account">Creating a Facebook Business Account</a></li>
+        <li><a href="#creating-an-instagram-business-account">Creating an Instagram Business Account</a></li>
+        <li><a href="#linking-to-facebook">Linking to Facebook</a></li>
         <li><a href="#getting-an-access-token">Getting an Access Token</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <ul>
+        <li><a href="#starting-the-app">Starting the app</a></li>
+        <li><a href="#sign-up">Sign up</a></li>
+        <li><a href="#updating-credentials">Updating credentials</a></li>
+        <li><a href="#creating-a-contact-list">Creating a contact list</a></li>
+        <li><a href="#creating-your-first-post">Creating your first post</a></li>
+      </ul>
+    <li><a href="#next-steps">Next steps</a></li>
+    <ul>
+        <li><a href="#running-the-app-on-the-local-network">Running the app on the local network</a></li>
+        <li><a href="#publishing-the-app-to-the-internet">Publishing the app to the internet</a></li>
+      </ul>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#videos-and-showcase">Videos and showcase</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -85,10 +98,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Product Name Screen Shot][product-screenshot]
+![Product Name Screen Shot](/website/static/user_page1.png)
 
-The HKA Social Media Bot is a command line tool, capable of sending or posting various messages to social media websites. Keep your workflow steady with scheduled posts and automatic image generation!
-<!-- Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description` -->
+The HKA Social Media Bot is a tool capable of posting images and messages to various social media websites. Keep your workflow steady with scheduled posts and automatic image generation!
+
+<!-- The HKA Social Media Bot is a command line tool, capable of sending or posting various messages to social media websites. Keep your workflow steady with scheduled posts and automatic image generation! -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -138,7 +152,7 @@ This is an example of how to list things you need to use the software and how to
   cd socialmedia-bot
   pip install -r requirements.txt
   ````
-  For more information about the dependencies see [requirements.txt](https://github.com/mirkosprojects/socialMediaBot/blob/main/requirements.txt)
+  For more information about the dependencies see [requirements.txt](https://github.com/mirkosprojects/socialmedia-bot/blob/main/requirements.txt)
 
 ### Creating a Facebook Business Account
 
@@ -173,34 +187,61 @@ HOW TO ADD FACEBOOK APP TO ACCOUNT AND RECEIVE ACCESS TOKEN
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<!-- Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+### Starting the app
+* Starting the app
+   ```sh
+   python main.py
+   ```
+   Once the app has started, it will output an ip adress (usually 127.0.0.1:5000), copy and paste it in your browser
 
-_For more examples, please refer to the [Documentation](https://example.com)_ -->
-
-### First start
-
-On the first start of the program, you will have to create a new account. Accounts are stored locally on your device and require a password. You have the option to create multiple accounts with unique usernames
-
-Once you have an account, head to ```settings``` &rarr; ```Change Access Token```.
-Paste the Access Token, you received in <a href="#getting-an-access-token">Getting an Access Token</a>.
-
-### Sending a Whatsapp Message
-
-Once you entered your Access Token, your user is set up to send Whatsapp Messages.
-Select ```Send a Whatsapp Message```, type your text and click ```OK```. Emojis and special characters are supported.
-
-> **Note** 
-> You can have up to 1000 free conversations per month, for more information about pricing, see [pricing](https://developers.facebook.com/docs/whatsapp/pricing/)
-
-### Posting to Instagram
-
-Select ```Post to Instagram``` and type the path of your image. Click ```OK``` and type a caption. Emojis and hashtags are supported.
-
-> **Warning**
-> In order to upload the image to instagram, this program publishes the image on [imgbox.com](https://imgbox.com/). This means, your photos will be available on the internet, even after you delete them from Instagram.
+### Sign up
+You will be redirected to a Login Page, create a new user account and log in with your email and password.
 
 > **Note**
-> You can post up to 25 Pictures per day
+> The website is running locally on your machine. Email adresses and passwords are stored in a local database at ```socialmedia-bot/instance/database.db```
+
+### Updating credentials
+You will have to update your credentials. 
+Go to ```Settings``` &rarr; ```Whatsapp```, enter your access token and phone number and click ```Update```.
+Repeat this step with your other social media accounts.
+
+### Creating a contact list
+Sending messages to whatsapp contacts requires their phone number.
+Go to ```Settings``` &rarr; ```Contacts``` and enter the contacts, you wish to message through whatsapp.
+
+### Creating your first post
+Go back to ```Home``` and type in a text, you wish to post.
+Add an image to the post by clicking on ```Select File``` or drag and drop it.
+Select the websites, you wish to post to and click on ```Post```.
+
+> **Note** 
+> You can have up to 1000 free whatsapp conversations per month, for more information about pricing, see [pricing](https://developers.facebook.com/docs/whatsapp/pricing/)
+
+> **Note**
+> You can post up to 25 pictures on instagram per day
+
+> **Warning**
+> In order to post an image through the Graph-API, this program publishes the image on [imgbox.com](https://imgbox.com/). This means, your photos will be available on the internet, even after you delete them from Instagram.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Next steps
+
+### Running the app on the local network
+You can run this application locally on your network, start it as follows
+```sh
+python main.py --host=0.0.0.0
+```
+Any other device on the network can now open the website by typing the given ip adress.
+
+> **Warning**
+> Multiple users shouldn't access the same account simultaniously
+
+### Publishing the app to the internet
+Cloud hosting providers like [DigitalOcean](https://www.digitalocean.com/) can host websites for you, making it available anywhere and for anyone.
+
+> **Warning**
+> Additional security measures might have to be implemented
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -269,7 +310,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/mirkosprojects/socialMediaBot/blob/main/LICENSE) for more information.
+Distributed under the MIT License. See [LICENSE](https://github.com/mirkosprojects/socialmedia-bot/blob/main/LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -290,6 +331,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 ## Acknowledgments
 
 * [Readme Template](https://github.com/othneildrew/Best-README-Template)
+* [Flask Template](https://github.com/techwithtim/Flask-Web-App-Tutorial)
 * <a href="https://www.flaticon.com/de/kostenlose-icons/bot" title="bot Icons">Bot Icons erstellt von Smashicons - Flaticon</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
