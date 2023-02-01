@@ -54,9 +54,7 @@ def sign_up():
         else:
             new_user = User(email=email, username=username, password=generate_password_hash(
                 password1, method='sha256'))
-            first_Contact = Contact(name="mirko", phone_number=123, email="abc@de", user_id = new_user.id)
             db.session.add(new_user)
-            db.session.add(first_Contact)
             db.session.commit()
             login_user(new_user, remember=True)
             flash('Account created!', category='success')
