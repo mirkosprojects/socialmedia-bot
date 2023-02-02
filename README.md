@@ -1,30 +1,12 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
-
-
 
 <!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-<!-- [![Contributors][contributors-shield]][contributors-url]
+[![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url] -->
-
+<!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 
 <!-- PROJECT LOGO -->
@@ -44,13 +26,14 @@
     <br />
     <a href="#videos-and-showcase">View Demo</a>
     ·
-    <!-- <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <!-- <a href="https://github.com/mirkosprojects/socialmedia-bot/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/mirkosprojects/socialmedia-bot/issues">Request Feature</a>
     · -->
     <a href="https://www.flaticon.com/de/kostenloses-icon/roboter_3558860"> Icon </a>
   </p>
 </div>
+
 
 <!-- TABLE OF CONTENTS -->
 <a name="readme-toc"></a>
@@ -87,18 +70,17 @@
         <li><a href="#publishing-the-app-to-the-internet">Publishing the app to the internet</a></li>
       </ul>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#videos-and-showcase">Videos and showcase</a></li>
+    <li><a href="#pictures-and-videos">Pictures and Videos</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Product Name Screen Shot](/website/static/user_page1.png)
+![Product Name Screen Shot][product-screenshot]
 
 The HKA Social Media Bot is a tool capable of posting images and messages to various social media websites. Keep your workflow steady with scheduled posts and automatic image generation!
 
@@ -107,9 +89,7 @@ The HKA Social Media Bot is a tool capable of posting images and messages to var
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- ### Built With
-
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
 * [![Vue][Vue.js]][Vue-url]
@@ -122,26 +102,20 @@ The HKA Social Media Bot is a tool capable of posting images and messages to var
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 
-
 <!-- GETTING STARTED -->
 ## Getting Started
-<!-- 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps. -->
-
-<!-- ### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* [python-prompt-toolkit](https://github.com/prompt-toolkit/python-prompt-toolkit)
-  ```sh
-  pip install prompt_toolkit
-  ```
-* [pyimgbox](https://github.com/plotski/pyimgbox)
-  ```sh
-  pip install pyimgbox
-  ``` -->
 
 ### Installation
+* Creating a new virtual environment
+
+  This app is built on [Flask][flask], which recommends creating a new conda environment
+  ```sh
+  conda create -n socialmediabotEnv python=3.9.7 anaconda
+  conda activate socialmediabotEnv
+  ```
+
+  > **Note**
+  > If you have closed your terminal window, you can reactivate your virtual environment by typing ```conda activate socialmediabotEnv``` again
 
 * Clone the repo
    ```sh
@@ -152,7 +126,7 @@ This is an example of how to list things you need to use the software and how to
   cd socialmedia-bot
   pip install -r requirements.txt
   ````
-  For more information about the dependencies see [requirements.txt](https://github.com/mirkosprojects/socialmedia-bot/blob/main/requirements.txt)
+  For more information about the dependencies see [requirements][requirements]
 
 ### Creating a Facebook Business Account
 
@@ -183,6 +157,7 @@ HOW TO ADD FACEBOOK APP TO ACCOUNT AND RECEIVE ACCESS TOKEN
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -215,16 +190,18 @@ Add an image to the post by clicking on ```Select File``` or drag and drop it.
 Select the websites, you wish to post to and click on ```Post```.
 
 > **Note** 
-> You can have up to 1000 free whatsapp conversations per month, for more information about pricing, see [pricing](https://developers.facebook.com/docs/whatsapp/pricing/)
+> You can have up to 1000 free whatsapp conversations per month, for more information about pricing, see [pricing][whatsapp-pricing]
 
 > **Note**
 > You can post up to 25 pictures on instagram per day
 
 > **Warning**
-> In order to post an image through the Graph-API, this program publishes the image on [imgbox.com](https://imgbox.com/). This means, your photos will be available on the internet, even after you delete them from Instagram.
+> In order to post an image through the Graph-API, this program publishes the image on [imgbox.com][imgbox]. This means, your photos will be available on the internet, even after you delete them from Instagram.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+
+<!-- PROFESSIONAL USAGE / NEXT STEPS -->
 ## Next steps
 
 ### Running the app on the local network
@@ -232,20 +209,18 @@ You can run this application locally on your network, start it as follows
 ```sh
 python main.py --host=0.0.0.0
 ```
-Any other device on the network can now open the website by typing the given ip adress.
+Any other device on the network can now open the website by typing the returned ip adress.
 
 > **Warning**
-> Multiple users shouldn't access the same account simultaniously
+> Multiple users shouldn't access the same account simultaneously
 
 ### Publishing the app to the internet
-Cloud hosting providers like [DigitalOcean](https://www.digitalocean.com/) can host websites for you, making it available anywhere and for anyone.
+Cloud hosting providers like [DigitalOcean][digital-ocean] can host websites for you, making your app available on the internet.
 
 > **Warning**
 > Additional security measures might have to be implemented
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- ROADMAP -->
@@ -266,54 +241,36 @@ Cloud hosting providers like [DigitalOcean](https://www.digitalocean.com/) can h
 - [ ] Scheduling Posts
 - [ ] GUI
 
-
-<!-- See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues). -->
+<!-- See the [open issues](https://github.com/mirkosprojects/socialmedia-bot/issues) for a full list of proposed features (and known issues). -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
-<!-- CONTRIBUTING -->
-<!-- ## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p> -->
-
-
-## Videos and Showcase
+<!-- PICTURES AND VIDEOS -->
+## Pictures and Videos
 
 ### Sending a whatsapp message and posting to instagram using Socialbot
 
-![Sending a Whatsapp message](website/static/whatsapp_instagram_demo.gif)
+![Sending a Whatsapp message][whatsapp-instagram-demo]
 
 ### Changing the whatsapp access token and phone number
 
-![Changing Whatsapp settings](website/static/settings_whatsapp.png)
+![Changing Whatsapp settings][whatsapp-settings]
 
 ### Editing the contacts
 
-![Editing Contact](website/static/settings_contacts.png)
+![Editing Contact][contact-settings]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/mirkosprojects/socialmedia-bot/blob/main/LICENSE) for more information.
+Distributed under the MIT License. See [LICENSE][license-url] for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTACT -->
@@ -321,10 +278,9 @@ Distributed under the MIT License. See [LICENSE](https://github.com/mirkosprojec
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/mirkosprojects/socialmedia-bot](https://github.com/mirkosprojects/socialmedia-bot)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
-
 
 
 <!-- ACKNOWLEDGMENTS -->
@@ -337,22 +293,34 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/main_menu.png
+
+<!-- SHIELDS -->
+[contributors-shield]: https://img.shields.io/github/contributors/mirkosprojects/socialmedia-bot.svg?style=for-the-badge
+[contributors-url]: https://github.com/mirkosprojects/socialmedia-bot/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/mirkosprojects/socialmedia-bot.svg?style=for-the-badge
+[forks-url]: https://github.com/mirkosprojects/socialmedia-bot/network/members
+[stars-shield]: https://img.shields.io/github/stars/mirkosprojects/socialmedia-bot.svg?style=for-the-badge
+[stars-url]: https://github.com/mirkosprojects/socialmedia-bot/stargazers
+[issues-shield]: https://img.shields.io/github/issues/mirkosprojects/socialmedia-bot.svg?style=for-the-badge
+[issues-url]: https://github.com/mirkosprojects/socialmedia-bot/issues
+[license-shield]: https://img.shields.io/github/license/mirkosprojects/socialmedia-bot.svg?style=for-the-badge
+[license-url]: https://github.com/mirkosprojects/socialmedia-bot/blob/main/LICENSE
+
+[flask]: https://flask.palletsprojects.com/en/2.2.x/
+
+<!-- RESSOURCES -->
+[product-screenshot]: /website/static/user_page1.png
+[whatsapp-instagram-demo]: website/static/whatsapp_instagram_demo.gif
+[whatsapp-settings]: website/static/settings_whatsapp.png
+[contact-settings]: website/static/settings_contacts.png
+[requirements]: https://github.com/mirkosprojects/socialmedia-bot/blob/main/requirements.txt
+[whatsapp-pricing]: https://developers.facebook.com/docs/whatsapp/pricing/
+[imgbox]: https://imgbox.com/
+[digital-ocean]: https://www.digitalocean.com/
+
+<!-- BUILT WITH -->
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
