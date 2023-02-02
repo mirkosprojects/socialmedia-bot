@@ -221,7 +221,7 @@ Any other device on the network can now open the website by typing the returned 
 Cloud hosting providers like [DigitalOcean][digital-ocean] can host websites for you, making your app available on the internet.
 
 > **Warning**
-> Additional security measures might have to be implemented
+> Additional security measures might need to be implemented
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -236,13 +236,20 @@ Cloud hosting providers like [DigitalOcean][digital-ocean] can host websites for
     - [ ] Twitter
     - [ ] Snapchat
     - [ ] LinkedIn
-- [x] Security
-    - [x] Password hashing
-    - [x] Encrypt Access Tokens
-- [ ] Publish Facebook App
+- [ ] Webapp
+    - [x] Rewrite as webapp using Flask
+    - [x] HTML GUI
+    - [ ] Database
+        - [x] password access
+        - [x] storing contacts
+        - [ ] storing posts
+    - [ ] Publishing to the internet
+        - [ ] Security improvements
+        - [ ] Deploy using Digital Ocean or other webhost
+- [ ] Publishing the facebook app
 - [ ] Image Generator using templates
 - [ ] Scheduling Posts
-- [ ] GUI
+
 
 <!-- See the [open issues](https://github.com/mirkosprojects/socialmedia-bot/issues) for a full list of proposed features (and known issues). -->
 
