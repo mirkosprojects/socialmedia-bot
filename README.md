@@ -211,6 +211,9 @@ python main.py --host=0.0.0.0
 ```
 Any other device on the network can now open the website by typing the returned ip adress.
 
+> **Note**
+> The default port is 5000. In some cases this port might be used by different applications. You can specify a different port with the ```--port``` argument
+
 > **Warning**
 > Multiple users shouldn't access the same account simultaneously
 
