@@ -24,7 +24,7 @@
     <a href="#readme-toc"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#videos-and-showcase">View Demo</a>
+    <a href="#pictures-and-videos">View Demo</a>
     ·
     <!-- <a href="https://github.com/mirkosprojects/socialmedia-bot/issues">Report Bug</a>
     ·
