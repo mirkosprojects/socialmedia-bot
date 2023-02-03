@@ -82,7 +82,7 @@
 
 ![Product Name Screen Shot][product-screenshot]
 
-The HKA Social Media Bot is a tool capable of posting images and messages to various social media websites. Keep your workflow steady with scheduled posts and automatic image generation!
+The HKA Social Media Bot is a tool capable of posting images and messages to various social media websites. ~~Keep your workflow steady with scheduled posts and automatic image generation!~~
 
 <!-- The HKA Social Media Bot is a command line tool, capable of sending or posting various messages to social media websites. Keep your workflow steady with scheduled posts and automatic image generation! -->
 
