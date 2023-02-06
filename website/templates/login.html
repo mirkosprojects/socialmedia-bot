@@ -3,21 +3,47 @@
 {% include "messages.html" %}
 
 <div class="container">
-<img src="../static/logo.png" alt="Logo" id="icon">
-<br>
-
-<form method="POST">
-  <h3 align="center">Login</h3>
-  <div class="form-group">
-    <label for="email">Email Address</label>
-    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" />
+  <div class="row gutters">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" id="div1">
+      <img src="../static/logo.png" alt="Logo" id="icon" name="icon">
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" id="div2">
+      <div class="imessage">
+        <p class="from-them" id="bot_greeting">Log In!</p>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" />
-  </div>
-  <br />
-  <button type="submit" class="btn btn-primary">Login</button>
-</form>
+  <form method="POST">
+    <div class="card h-100">
+      <div class="card-body">
+        <!-- <h3 align="center">Login</h3> -->
+        <div class="form-group">
+          <!-- <label for="email">Email Address</label> -->
+          <br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="email-addon"><i class="bi bi-envelope"></i></span>
+            </div>
+            <input type="email" class="form-control" placeholder="Enter your Email" id="email" name="email"
+              aria-describedby="email-addon">
+          </div>
+        </div>
+        <div class="form-group">
+          <!-- <label for="password">Password</label> -->
+          <br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="password-addon"><i class="bi bi-lock"></i></span>
+            </div>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password"
+              aria-describedby="password-addon">
+          </div>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+    </div>
+  </form>
+  <p style="transform: rotate(0);">Need an account? <a href="/sign-up" class="stretched-link">Sign Up</a></p>
 </div>
 {% endblock %}

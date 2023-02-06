@@ -2,28 +2,71 @@
 {% include "messages.html" %}
 
 <div class="container">
-  <img src="../static/logo.png" alt="Logo" id="icon">
-  <br>
+  <div class="row gutters">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" id="div1">
+      <img src="../static/logo.png" alt="Logo" id="icon" name="icon">
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6" id="div2">
+      <div class="imessage">
+        <p class="from-them" id="bot_greeting">Sign Up!</p>
+      </div>
+    </div>
+  </div>
   <form method="POST">
-    <h3 align="center">Sign Up</h3>
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" />
+    <div class="card h-100">
+      <div class="card-body">
+        <!-- <h3 align="center">Sign Up</h3> -->
+        <div class="form-group">
+          <br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="email-addon"><i class="bi bi-envelope"></i></span>
+            </div>
+            <input type="email" class="form-control" placeholder="Enter your Email" id="email" name="email"
+              aria-describedby="email-addon">
+          </div>
+        </div>
+        <div class="form-group">
+          <br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="name-addon"><i class="bi bi-person-circle"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="Enter your first name" id="firstName" name="firstName"
+              aria-describedby="email-addon">
+          </div>
+          <!-- <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name" /> -->
+        </div>
+        <div class="form-group">
+          <br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="password1-addon"><i class="bi bi-lock"></i></span>
+            </div>
+            <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter your password"
+              aria-describedby="password1-addon">
+          </div>
+          <!-- <label for="password1">Password</label>
+          <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password" /> -->
+        </div>
+        <div class="form-group">
+          <br>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="password2-addon"><i class="bi bi-lock"></i></span>
+            </div>
+            <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm your password"
+              aria-describedby="password2-addon">
+          </div>
+          <!-- <label for="password2">Password (Confirm)</label>
+          <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password" /> -->
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Register</button>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="firstName">First Name</label>
-      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name" />
-    </div>
-    <div class="form-group">
-      <label for="password1">Password</label>
-      <input type="password" class="form-control" id="password1" name="password1" placeholder="Enter password" />
-    </div>
-    <div class="form-group">
-      <label for="password2">Password (Confirm)</label>
-      <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm password" />
-    </div>
-    <br />
-    <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <p style="transform: rotate(0);">Already have an account? <a href="/login" class="stretched-link">Login</a></p>
 </div>
 {% endblock %}
