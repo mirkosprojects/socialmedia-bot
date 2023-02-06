@@ -299,6 +299,7 @@ Project Link: [https://github.com/mirkosprojects/socialmedia-bot](https://github
 * [Readme Template](https://github.com/othneildrew/Best-README-Template)
 * [Flask Template](https://github.com/techwithtim/Flask-Web-App-Tutorial)
 * <a href="https://www.flaticon.com/de/kostenlose-icons/bot" title="bot Icons">Bot Icons erstellt von Smashicons - Flaticon</a>
+* [iMessage Speech Bubbles](https://codepen.io/AllThingsSmitty/pen/jommGQ)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
