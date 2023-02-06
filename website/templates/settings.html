@@ -335,24 +335,6 @@ content %}
         </form>
     </div>
 </div>
-<!-- <script>
-    function openSettings(settings_id) {
-        var i;
-        var x = document.getElementsByClassName("settings");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        document.getElementById(settings_id).style.display = "block";
-    }
-</script> -->
-<script>
-    function deleteContact(contact_id) {
-        fetch("/delete-contact", {
-            method: "POST",
-            body: JSON.stringify({ contact_id: contact_id }),
-        }).then((_res) => {
-            window.location.href = "/settings";
-        });
-    }
-</script>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/delete_contact.js') }}"></script>
 {% endblock %}
