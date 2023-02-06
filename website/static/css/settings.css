@@ -76,3 +76,11 @@ td
     border-collapse: collapse;
     border: 1px solid;
 } */
+
+.nav-tabs > li.active > a {
+    color: #3c5a78;
+    font-size: 16px;
+  }
+  .nav-tabs > li > a {
+    color: #8f8f8f;
+  }
