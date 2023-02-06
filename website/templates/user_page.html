@@ -14,7 +14,7 @@ content %}
           </div>
           <div class="col-xl-6 col-lg-6 col-md-6 col-sm-9 col-9" id="div2">
             <div class="imessage">
-              <p class="from-them" id="bot_greeting">...</p>
+              <p class="from-them" id="bot_greeting"></p>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@ content %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/image_selector.js') }}"></script>
   <script type="text/javascript" src="{{ url_for('static', filename='js/disable_buttons.js') }}"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/bot_greeting.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/bot_greeting.js') }}"></script>
 
 </body>
 {% endblock %}
