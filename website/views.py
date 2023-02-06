@@ -115,29 +115,29 @@ def settings():
         if request.form.get('update_whatsapp_button', False):
             if request.form.get('whatsapp_token'):
                 whatsapp_token = str(request.form.get('whatsapp_token'))    
-                flash(f"Updated access token! \n {whatsapp_token}", category='success')
+                flash("Updated access token!", category='success')
                 current_user.access_token = whatsapp_token
             if request.form.get('whatsapp_number'):
                 whatsapp_number = str(request.form.get('whatsapp_number'))
-                flash(f"Updated phone number! \n {whatsapp_number}", category='success')
+                flash("Updated phone number!", category='success')
                 current_user.phone_number = whatsapp_number
         if request.form.get('update_instagram_button', False):
             if request.form.get('instagram_token'):
                 instagram_token = str(request.form.get('instagram_token'))
-                flash(f"Updated access token! \n {instagram_token}", category='success')
+                flash("Updated access token!", category='success')
                 current_user.access_token = instagram_token
             if request.form.get('instagram_id'):
                 instagram_id = str(request.form.get('instagram_id'))
-                flash(f"Updated business id! \n {instagram_id}", category='success')
+                flash("Updated business id!", category='success')
                 current_user.business_id = instagram_id
         if request.form.get('update_facebook_button', False):
             if request.form.get('facebook_token'):
                 facebook_token = str(request.form.get('facebook_token'))
-                flash(f"Updated access token! \n {facebook_token}", category='success')
+                flash("Updated access token!", category='success')
                 current_user.access_token = facebook_token
             if request.form.get('facebook_id'):
                 facebook_id = str(request.form.get('facebook_id'))
-                flash(f"Updated business id! \n {facebook_id}", category='success')
+                flash("Updated business id!", category='success')
                 current_user.business_id = facebook_id
         if request.form.get('contact_name') and request.form.get('contact_email') and request.form.get('contact_number'):
             name = request.form.get('contact_name')
