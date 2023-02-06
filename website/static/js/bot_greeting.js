@@ -1,5 +1,4 @@
-import phrases from "../phrases.json" assert { type: "json" };
-var text = phrases.phrases
+import { text, timeout } from "../phrases.js";
 var elem = document.getElementById("bot_greeting");
 var inst;
 var temp = [];
@@ -8,7 +7,7 @@ document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
         clearInterval(inst);
     } else {
-        inst = setInterval(change_text, 60000);
+        inst = setInterval(change_text, timeout);
     }
 });
 
@@ -28,4 +27,4 @@ var showText = function (target, message, index, interval) {
     };
 }
 setTimeout(change_text, 0);
-inst = setInterval(change_text, 60000);
+inst = setInterval(change_text, timeout);
