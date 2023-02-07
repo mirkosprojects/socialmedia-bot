@@ -1,7 +1,6 @@
-<link rel="stylesheet" href="{{ url_for('static', filename='/css/settings.css') }}">
+{% extends "base.html" %} {% block content %}
 
-{% extends "base.html" %} {% block title %}Settings{% endblock %} {% block
-content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/settings.css') }}">
 
 <ul class="nav nav-tabs navbar-dark bg-dark" id="myTab" role="tablist">
     <li class="nav-item">
