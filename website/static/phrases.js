@@ -2,7 +2,7 @@ export const text = ["Let me help you publish messages!",
 "I can even send Whatsapp messages!",
 "Can I post something for you?",
 "Did you try posting to Instagram yet?",
-"Give my developer a star on GitHub! https://github.com/mirkosprojects/socialmedia-bot",
+"Give my developer a ⭐️ on GitHub! https://github.com/mirkosprojects/socialmedia-bot",
 "Got some stuff to post?",
 "I can help you update your friends!",
 "How can I help you?",
@@ -17,4 +17,5 @@ export const text = ["Let me help you publish messages!",
 "The early poster catches the most likes",
 "A photo is worth a thousand likes"];
 
-export const timeout = 60000;
+export const timeout = 120000;
+export const interval = 40;
