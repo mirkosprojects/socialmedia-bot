@@ -2,6 +2,7 @@ import { text, timeout, interval } from "../phrases.js";
 var elem = document.getElementById("bot_greeting");
 var inst;
 var temp = [];
+var animation_counter = 0;
 
 /**
  * Clear/run animation, depending if tab is visible
@@ -24,6 +25,7 @@ function change_text() {
     var counter = Math.floor(Math.random() * temp.length);
     elem.innerHTML = "";
     var sliced_text = slice_text(temp.splice(counter, 1)[0]);
+    animation_counter = change_icon("icon", animation_counter);
     showText("#bot_greeting", sliced_text, 0, interval);
 }
 
@@ -70,6 +72,37 @@ function slice_text(text_str){
     }
     return(slices)
 }
+
+/**
+ * changes the image of icon_id
+ * @param {[string]} icon_id the icon id
+ * @param {[number]} counter idx of the image to display
+ * @returns next counter value
+ */
+function change_icon(icon_id, counter) {
+    if (counter == 0) {
+        document.getElementById(icon_id).src = "../static/images/icon_wave.webp";
+        setTimeout(function(){change_icon(icon_id, 3);}, 2000);
+        counter++;
+        return(counter);
+    }
+    else if (counter == 1) {
+        document.getElementById(icon_id).src = "../static/images/icon_wink.webp";
+        setTimeout(function(){change_icon(icon_id, 3);}, 2000);
+        counter++;
+        return(counter);
+    }
+    else if (counter == 2) {
+        document.getElementById(icon_id).src = "../static/images/icon_headroll.webp";
+        setTimeout(function(){change_icon(icon_id, 3);}, 1833);
+        return(0);
+    }
+    else if (counter == 3) {
+        document.getElementById(icon_id).src = "../static/images/icon.png";
+        return(0);
+    }
+}
+
 
 setTimeout(change_text, 0);
 inst = setInterval(change_text, timeout);

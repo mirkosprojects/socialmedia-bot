@@ -9,7 +9,7 @@ from helpers import send_whatsapp_message, send_whatsapp_image, post_to_instagra
 from . import db, UPLOAD_FOLDER, BASE_FOLDER
 
 TEMPLATE_FOLDER = os.path.join(BASE_FOLDER, "templates")
-SPACEHOLDER_UPLOAD = os.path.join(BASE_FOLDER, "static", "upload.png")
+SPACEHOLDER_UPLOAD = os.path.join(BASE_FOLDER, "static", "images", "upload.png")
 views = Blueprint('views', __name__)
 
 @views.route('/', methods=['GET', 'POST'])
@@ -40,7 +40,11 @@ def home():
                 os.mkdir(os.path.dirname(file_path))
             uploaded_img.save(file_path)
             image = file_path
-            image_url = upload_image_to_host(file_path)
+            try:
+                image_url = upload_image_to_host(file_path)
+            except:
+                flash("There was an Error, when trying to upload to PyImgBox. Please try again later...", category='error')
+                image_url = ""
         rel_image_path = os.path.relpath(image, TEMPLATE_FOLDER)
         if request.form.get('text_input'):
             text = request.form.get('text_input')

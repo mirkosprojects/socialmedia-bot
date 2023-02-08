@@ -13,7 +13,7 @@
 <br />
 <div align="center">
   <a href="https://www.flaticon.com/de/kostenloses-icon/roboter_3558860">
-    <img src="website/static/logo.png" alt="Logo" width="80" height="80">
+    <img src="website/static/images/icon.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">HKA Social Media Bot</h3>
@@ -322,10 +322,10 @@ Project Link: [https://github.com/mirkosprojects/socialmedia-bot](https://github
 [flask]: https://flask.palletsprojects.com/en/2.2.x/
 
 <!-- RESSOURCES -->
-[product-screenshot]: /website/static/user_page1.png
-[whatsapp-instagram-demo]: website/static/whatsapp_instagram_demo.gif
-[whatsapp-settings]: website/static/settings_whatsapp.png
-[contact-settings]: website/static/settings_contacts.png
+[product-screenshot]: /website/static/images/user_page1.png
+[whatsapp-instagram-demo]: website/static/images/whatsapp_instagram_demo.gif
+[whatsapp-settings]: website/static/images/settings_whatsapp.png
+[contact-settings]: website/static/images/settings_contacts.png
 [requirements]: https://github.com/mirkosprojects/socialmedia-bot/blob/main/requirements.txt
 [whatsapp-pricing]: https://developers.facebook.com/docs/whatsapp/pricing/
 [imgbox]: https://imgbox.com/

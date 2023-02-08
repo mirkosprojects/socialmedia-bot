@@ -14,9 +14,14 @@ p {
 }
 
 #icon {
-    margin: 20px 0 20px 0;
-    width: 80px;
-    height: 80px;
+    margin: 10px 0 10px 0;
+    width: 100px;
+    height: 100px;
+}
+
+#navbar_icon {
+  width: 30px;
+  height: 30px;
 }
 
 textarea {
