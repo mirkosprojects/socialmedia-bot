@@ -12,10 +12,24 @@ export const text = ["Let me help you publish messages!",
 "Greetings! Let's share a story.",
 "Did you know that I can post Emojis 🚀",
 "Hiya! Got some work for me?",
-"Let's make some social media magic happen 🪄",
+"Let's make some social media magic happen 💫",
 "A post a day keeps the boredom at bay",
-"The early poster catches the most likes",
-"A photo is worth a thousand likes"];
+"The early poster catches the most likes!",
+"The world is waiting for your message!",
+"Social media, here we come!",
+"The world is ready for your next post!",
+"Let's turn your followers into fans!",
+"A photo is worth a thousand likes",
+"Greetings! Let's make some noise on social media 🔊",
+"Hola! I'm here to help you make a splash on social media 🌊",
+"Salām! Let's create some buzz on social media 🐝",
+"Merhaba! I'm ready to help you reach new heights on social media 🚀",
+"Hola! Let's show the world your creativity 🎨",
+"こんにちは! Let's inspire others on twitter 💫",
+"Bonjour! Let's share your adventures with the 🌍",
+"Aloha! Ready to share some updates? 🌅",
+"Let's make your content go viral 🔥",
+"Konnichiwa! I'll keep your social media up to date!"];
 
 export const timeout = 120000;
 export const interval = 40;
