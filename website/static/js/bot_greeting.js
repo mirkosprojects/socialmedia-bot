@@ -82,22 +82,28 @@ function slice_text(text_str){
 function change_icon(icon_id, counter) {
     if (counter == 0) {
         document.getElementById(icon_id).src = "../static/images/icon_wave.webp";
-        setTimeout(function(){change_icon(icon_id, 3);}, 2000);
+        setTimeout(function(){change_icon(icon_id, 4);}, 2000);
         counter++;
         return(counter);
     }
     else if (counter == 1) {
-        document.getElementById(icon_id).src = "../static/images/icon_wink.webp";
-        setTimeout(function(){change_icon(icon_id, 3);}, 2000);
+        document.getElementById(icon_id).src = "../static/images/icon_jump.webp";
+        setTimeout(function(){change_icon(icon_id, 4);}, 2000);
         counter++;
         return(counter);
     }
     else if (counter == 2) {
-        document.getElementById(icon_id).src = "../static/images/icon_headroll.webp";
-        setTimeout(function(){change_icon(icon_id, 3);}, 1833);
-        return(0);
+        document.getElementById(icon_id).src = "../static/images/icon_wink.webp";
+        setTimeout(function(){change_icon(icon_id, 4);}, 2000);
+        counter++;
+        return(counter);
     }
     else if (counter == 3) {
+        document.getElementById(icon_id).src = "../static/images/icon_headroll.webp";
+        setTimeout(function(){change_icon(icon_id, 4);}, 1833);
+        return(0);
+    }
+    else if (counter == 4) {
         document.getElementById(icon_id).src = "../static/images/icon.png";
         return(0);
     }
