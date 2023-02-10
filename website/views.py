@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, flash, jsonify
 from flask_login import login_required, current_user
-from .models import Contact
+from .models import Contact, Photo
 import os
 import json
 # from user import User as userclass, InvalidPasswordError, InvalidUserDataError
@@ -34,8 +34,13 @@ def home():
         # get the uploaded file and upload it to webhost
         if request.files['uploaded-file'].filename != "":
             uploaded_img = request.files['uploaded-file']
-            img_filename = secure_filename(uploaded_img.filename)
-            file_path = os.path.join(BASE_FOLDER, "static", "uploads", str(current_user.id), img_filename)
+            img_filename, img_extension = os.path.splitext(secure_filename(uploaded_img.filename))
+            image_db = Photo(name=img_filename, caption=text, extension=img_extension, user_id=current_user.id)
+            db.session.add(image_db)
+            db.session.commit()
+            # for photo in current_user.photos:
+            #     print(f"The image name is: {photo.name}, the image id is: {photo.id}")
+            file_path = os.path.join(BASE_FOLDER, "static", "uploads", str(current_user.id), str(image_db.id) + img_extension)
             if not os.path.exists(os.path.dirname(file_path)):
                 os.mkdir(os.path.dirname(file_path))
             uploaded_img.save(file_path)
@@ -147,7 +152,7 @@ def settings():
             name = request.form.get('contact_name')
             email = request.form.get('contact_email')
             number = request.form.get('contact_number')
-            new_contact = Contact(name=name, phone_number=number, email=email, user_id= current_user.id)
+            new_contact = Contact(name=name, phone_number=number, email=email, user_id=current_user.id)
             db.session.add(new_contact)
             flash('Contact added!', category='success')
 
@@ -163,6 +168,7 @@ def settings():
     return render_template("settings.html", user=current_user, data=data)
 
 @views.route('/delete-contact', methods=['POST'])
+@login_required
 def delete_contact():  
     contact = json.loads(request.data)
     contact_id = contact['contact_id']
@@ -173,3 +179,8 @@ def delete_contact():
             db.session.commit()
 
     return jsonify({})
+
+@views.route('/history')
+@login_required
+def history():
+    return render_template("history.html", user=current_user)

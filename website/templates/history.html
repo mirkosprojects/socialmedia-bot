@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+
+<br>
+<div id="post_layout" class="w3-container w3-display-container settings">
+    <div class="container">
+
+
+        <div class="row gutters">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row gutters">
+                            {% for photo in user.photos %}
+                            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-12">
+                                <div>
+                                    <h3>{{ photo.name }}</h3>
+                                    <p style="color: slategray;">{{ photo.created.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                                    <div class="square">
+                                        <img id="post_history_img" src="{{ '../static/uploads/' + user.id|string + '/' + photo.id|string + photo.extension|string }}">
+                                    </div>
+                                    <p style="color: slategray;">{{ photo.caption }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
